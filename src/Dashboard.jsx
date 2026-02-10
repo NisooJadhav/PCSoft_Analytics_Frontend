@@ -25,6 +25,9 @@ import {
 import DataSources from './DataSources';
 import DataSets from './DataSets';
 import Reports from './Reports';
+import Questions from './Questions';
+import DashboardsPage from './Dashboards';
+import Subscriptions from './Subscriptions';
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -135,6 +138,12 @@ const Dashboard = () => {
         return <DataSets darkMode={darkMode} />;
       case 'reports':
         return <Reports darkMode={darkMode} />;
+      case 'questions':
+        return <Questions darkMode={darkMode} />;
+      case 'dashboards':
+        return <DashboardsPage darkMode={darkMode} />;
+      case 'subscriptions':
+        return <Subscriptions darkMode={darkMode} />;
       case 'home':
       default:
         return (
@@ -431,9 +440,12 @@ const Dashboard = () => {
               <div>
                 <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-slate-800'}`}>
                   {activePage === 'home' ? 'Welcome back, John! 👋' : 
-                   activePage === 'data-sources' ? 'Welcome back, John! 👋' :
-                   activePage === 'data-sets' ? 'Welcome back, John! 👋' : 
-                   activePage === 'reports' ? 'Welcome back, John! 👋' :
+                   activePage === 'data-sources' ? 'Data Sources' :
+                   activePage === 'data-sets' ? 'Data Sets' : 
+                   activePage === 'reports' ? 'Reports' :
+                   activePage === 'questions' ? 'Questions' :
+                   activePage === 'dashboards' ? 'Dashboards' :
+                   activePage === 'subscriptions' ? 'Email Subscriptions' :
                    menuItems.find(item => item.id === activePage)?.label || 'Dashboard'}
                 </h2>
                 <p className="text-sm text-slate-500 dark:text-slate-400">
@@ -441,6 +453,9 @@ const Dashboard = () => {
                    activePage === 'data-sources' ? 'Connect and manage your data sources' :
                    activePage === 'data-sets' ? 'Create and manage your data sets' :
                    activePage === 'reports' ? 'Create and manage your reports' :
+                   activePage === 'questions' ? 'Create and manage your analytical questions' :
+                   activePage === 'dashboards' ? 'Create and manage your dashboards' :
+                   activePage === 'subscriptions' ? 'Manage your email subscriptions for reports and dashboards' :
                    'Manage your analytics platform'}
                 </p>
               </div>
